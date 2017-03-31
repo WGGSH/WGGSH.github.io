@@ -1,5 +1,5 @@
 function setup(){
-	createCanvas(1280,720,WEBGL);
+	createCanvas(windowWidth,windowHeight,WEBGL);
 	//noLoop();
 	colorMode(HSB,360,100,100);
 }
