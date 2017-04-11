@@ -16,8 +16,8 @@ const SIZE=120;
 function draw(){
 	background(0);
 	scale(2);
-	rotateX(PI*2/DETAIL*mouseY);
-	rotateY(PI*2/DETAIL*mouseX);
+	rotateX(PI*2/360*mouseY);
+	rotateY(PI*2/360*mouseX);
 
 	push();
 	
