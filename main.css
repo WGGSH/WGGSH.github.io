@@ -1,17 +1,15 @@
-p{
-	color:blue;
-}
-
 * { 
 	margin: 0;
 	padding: 0;
 }
 
+/* link */
 a:link { color: #3af; }
 a:visited { color: #3af; }
 a:hover { color: #ff0000; }
 a:active { color: #ff8000; }
 
+/* header */
 header{
 	background-color: #000;
 	padding: 0 45px;
@@ -20,32 +18,35 @@ header{
 	border-bottom: 5px solid#fff;
 }
 
-body{
-	font-family:YuGothic;
-	background-color:#000;
-	color: #fff;
-	font-size:20px;
-	margin: 10px;
-	/* background-image: url("./bg.jpg"); */
-	opacity: 0.8;
-	
-}
-
-nav{
-	/* padding: 0 50px;  */
+header ul{
+	padding: 20px 0 10px 0;
 	text-align:center;
 	background-color:#000;
 }
 
-nav ul li{
-	/* margin : 0 80px; */
-	padding: 0 50px;
+header ul li{
+	padding: 10px 50px;
 	margin: 0 -6.5px;
 	display:inline-block;
 	font-weight: bold;
 	border-left: 5px solid #fff;
 	border-right: 5px solid #fff;
+	font-size: 24;
 }
+
+/* finish header */
+
+body{
+	font-family:YuGothic;
+	background-color:#000;
+	color: #fff;
+	font-size:20px;
+	margin: 20px 3vw 0px 3vw;
+	/* background-image: url("./bg.jpg"); */
+	opacity: 0.8;
+	
+}
+
 
 .RightEdge{
 	border-right: 5px solid #fff;
@@ -98,6 +99,14 @@ footer{
 
 h2{
 	padding: 0 30px;
+	margin: 20px 0;
+	border-bottom: 5px solid #fff;
+	border-left: 5px solid #fff;
+}
+
+h3{
+	padding: 0 30px;
+	margin: 20px 0;
 	border-bottom: 5px solid #fff;
 	border-left: 5px solid #fff;
 }
@@ -106,9 +115,12 @@ h2{
 	margin: 0 35px;
 }
 
+ul{
+	margin: 0 20px;
+}
 
 ul li{
-	margin: 0 -40px;
+	margin: 0 -20px;
 	list-style: none;
 }
 
@@ -118,4 +130,10 @@ body .Back{
 	/* opacity: 0.2; */
 	/* z-index: -1; */
 	z-index: 1;
+}
+
+/* copylight */
+
+p{
+	color:#57f;
 }

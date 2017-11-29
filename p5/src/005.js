@@ -2,7 +2,8 @@ var blockPosList = [];
 
 function setup() {
 	var canvas = createCanvas(windowWidth*0.97, windowHeight*1.5,WEBGL);
-	canvas.parent("Back");
+	// var canvas = createCanvas(windowWidth*0.4, windowHeight*0.4,WEBGL);
+	// canvas.parent("Back");
 	//noLoop();
 	colorMode(HSB, 360, 100, 100);
 	
@@ -38,21 +39,26 @@ function drawCube(size) {
 	endShape();
 }
 
-function draw(){
+function draw() {
+	
 	background(0);
 	//translate(width / 2, height / 2);
 
-	rotateX(PI * 2 / 360 * mouseY);
-	rotateY(PI * 2 / 360 * mouseX);
+	rotateX(PI * 2 / 360 * frameCount);
+	rotateY(PI * 2 / 360 * frameCount);
 	
-	stroke(255);
-	fill(255);
+	// stroke(255);
+	fill(frameCount%360,100,100);
 	noFill();
-
+	var dirY = (mouseY / height - 0.5) * 4;
+	var dirX = (mouseX / width - 0.5) * 4;
+	directionalLight(204, 204, 204, dirX, dirY, 1);
 	for (let pos of blockPosList) {
 		push();
 		translate(pos.x, pos.y, pos.z);
-		drawCube(100);
+		// drawCube(100);
+		// box(100);
+		sphere(100);
 		pop();
 	}	
 
