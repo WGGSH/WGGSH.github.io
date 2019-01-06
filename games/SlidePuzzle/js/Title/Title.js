@@ -6,6 +6,7 @@ var Title = function () {
   var button2;
   var slider;
   var customNum;
+  var buttonCredit;
 
   // カスタム用ボタンを押したときの処理
   this.customButtonFunc = function () {
@@ -40,10 +41,14 @@ var Title = function () {
     game.sceneList[0].startButtonFunc(game.sceneList[0].customNum);
   }
 
+  this.buttonCreditClicked = function () {
+    window.open('./credit.html', '_blank');
+  }
+
   this.setup = function () {
     // UIの初期化
     var fontSize = (windowHeight / 40) + 'px';
-    var buttonWidth = (Math.floor(windowWidth / 6)) + 'px';
+    var buttonWidth = (Math.floor(windowWidth < windowHeight ? (windowWidth / 6) : windowWidth/12)) + 'px';
     this.button3x3 = createButton('3x3');
     this.button3x3.style('font-size', fontSize);
     this.button3x3.style('width', buttonWidth);
@@ -67,16 +72,28 @@ var Title = function () {
     var width = widthScale(0.5) + 'px';
     this.slider.style('width', width);
 
-    var customButtonWidth = (Math.floor(windowWidth / 3)) + 'px';
+    var customButtonWidth = (Math.floor(windowWidth < windowHeight ? (windowWidth / 3) : windowWidth / 9)) + 'px';
     this.buttonCustom = createButton('Custom');
     this.buttonCustom.style('font-size', fontSize);
     this.buttonCustom.style('width',customButtonWidth);
     this.buttonCustom.position(widthScale(0.5)-this.buttonCustom.width/2, heightScale(0.85));
     this.buttonCustom.mouseClicked(this.buttonCutomClicked);
 
+    this.buttonCredit = createButton('Credit');
+    this.buttonCredit.style('font-size', fontSize);
+    this.buttonCredit.style('width', 80+'px');
+    this.buttonCredit.position(widthScale(1.0) -(windowWidth>windowHeight ? (windowWidth-windowHeight)/2 : 0)- this.buttonCredit.width*1.2, heightScale(1.0) - this.buttonCredit.height*1.5);
+    this.buttonCredit.mouseClicked(this.buttonCreditClicked);
+
+    // タッチイベントの有効化
+    // window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+    // window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
   }
 
   this.update = function () {
+    // タッチイベントの有効化
+    // window.addEventListener("touchstart", function (event) { }, { passive: true });
+    // window.addEventListener("touchmove", function (event) { }, { passive: true });
     // スライダーの値を取得
     this.customNum = this.slider.value();
     

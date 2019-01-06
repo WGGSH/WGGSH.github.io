@@ -21,9 +21,12 @@ var ImageSelect = function () {
     } else {
       width = Math.floor(windowWidth) + 'px';
     }
-    this.select.option('0:プロ生ちゃん01');
-    this.select.option('1:プロ生ちゃん02');
-    this.select.option('2:プロ生ちゃん03');
+    for (let i=0; i < game.resource.puzzleImageNum; i++) {
+      this.select.option(zeroPadding(i,2) + ':' + game.resource.imageName[i]);
+      // this.select.option('1:プロ生ちゃん02');
+      // this.select.option('2:プロ生ちゃん03');
+      // this.select.option('3:このはちゃん01');
+    }
 
     this.select.style('font-size', fontSize);
     this.select.style('width', width);
@@ -31,7 +34,8 @@ var ImageSelect = function () {
 
     this.select.changed(function () {
       // console.log(game.sceneList[2].select.value()[0]);
-      game.sceneList[2].currentIndex = game.sceneList[2].select.value()[0];
+      // console.log(int(game.sceneList[2].select.value()[0]*10)+int(game.sceneList[2].select.value()[1]));
+      game.sceneList[2].currentIndex = int(game.sceneList[2].select.value()[0] * 10) + int(game.sceneList[2].select.value()[1]);
       game.sceneList[1].originalImageIndex = game.sceneList[2].currentIndex;
       game.sceneList[2].currentImage = game.resource.puzzleImage[game.sceneList[2].currentIndex];
     });
@@ -43,6 +47,10 @@ var ImageSelect = function () {
     startButton.mouseClicked(function () {
       game.nextScene = 1;
     });
+
+    // タッチイベントの無効化
+    // window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: true });
+    // window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
   }
 
   this.update = function () {

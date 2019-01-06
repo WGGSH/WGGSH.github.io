@@ -20,6 +20,7 @@ var Puzzle = function () {
   var movingFlag;
   var moveOldPos;
   var moveTargetPos;
+  var score; // スコア
 
   this.setDivNum = function (num) {
     // this.divNum = num;
@@ -83,7 +84,8 @@ var Puzzle = function () {
     this.moveOldPos = new Array(2);
     this.moveTargetPos = new Array(2);
     this.moveCount = 0;
-    this.moveFrame = 10;
+    this.moveFrame = 3;
+    this.score = 0;
 
     // パズル用の分割画像を作成
     this.slicedImage = new Array(this.divNum);
@@ -129,10 +131,10 @@ var Puzzle = function () {
     // UIの登録
     var buttonNumber = createButton("数字を表示");
     var fontSize = Math.floor(windowHeight / 35) + 'px';
-    var width = Math.floor(windowWidth / 2.5) + 'px';
+    var width = Math.floor(windowWidth / (windowWidth > windowHeight ? 8.5 : 2.5)) + 'px';
     buttonNumber.style('font-size', fontSize);
     buttonNumber.style('width', width);
-    buttonNumber.position(widthScale(0.25)-buttonNumber.width/2, heightScale(1.0) - 80);
+    buttonNumber.position(widthScale(0.5)-buttonNumber.width*1.2, heightScale(1.0) - 80);
     buttonNumber.mouseClicked(function () {
       game.sceneList[1].showNumberFlag = !game.sceneList[1].showNumberFlag;
     });
@@ -140,7 +142,7 @@ var Puzzle = function () {
     var buttonOriginalImage = createButton("元画像を表示");
     buttonOriginalImage.style('font-size', fontSize);
     buttonOriginalImage.style('width', width);
-    buttonOriginalImage.position(widthScale(0.75) - buttonOriginalImage.width/2, heightScale(1.0) - 80);
+    buttonOriginalImage.position(widthScale(0.5) + buttonOriginalImage.width*0.2, heightScale(1.0) - 80);
     buttonOriginalImage.mouseClicked(function () {
       game.sceneList[1].showOriginalImageFlag = !game.sceneList[1].showOriginalImageFlag;
     });
@@ -159,12 +161,34 @@ var Puzzle = function () {
       this.showOriginalImageFlag = true;
       this.clearFlag = false;
 
+      let buttonWidth = windowWidth > windowHeight ? windowHeight * 0.9 : windowWidth * 0.9;
+      console.log(buttonWidth);
       var titleButton = createButton('タイトルに戻る');
-      titleButton.style('font-size', '40px');
-      titleButton.style('width', '400px');
+      titleButton.style('font-size', '20px');
+      titleButton.style('width', Math.floor(buttonWidth)+'px');
       titleButton.position(widthScale(0.5) - titleButton.width / 2, heightScale(1.0) - 80);
       titleButton.mouseClicked(function () {
         game.nextScene = 0;
+      });
+
+      // ツイート
+      var tweetButton = createButton('成績をツイートする');
+      tweetButton.style('font-size', '20px');
+      tweetButton.style('width', Math.floor(buttonWidth) + 'px');
+      tweetButton.position(widthScale(0.5) - tweetButton.width / 2, heightScale(1.0) - 40);
+      let score = this.score;
+      let level = this.divNum + 'x' + this.divNum;
+      let image = game.resource.imageName[this.originalImageIndex];
+      tweetButton.mouseClicked(function () {
+        // 結果をツイートする
+        window.open('http://twitter.com/home?status=' +
+          encodeURI(image + 'の' + level + 'を' + score + '手でクリア！') +
+          '%0d%23マスコットアプリ文化祭' +
+          '%0d%23スライドパズル' +
+          '%0dwggsh.github.io/games/SlidePuzzle'
+        );
+        // window.open('https://twitter.com/share?url=https://rfs.jp/sb/javascript/js-lab/tweet-button.html&text=Twitter%E3%81%AETweet+Button%EF%BC%88%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88%E3%83%9C%E3%82%BF%E3%83%B3%EF%BC%89%E3%82%92%E8%A8%AD%E7%BD%AE%E3%81%99%E3%82%8B+-+SMART+%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%A6%E3%82%A7%E3%83%96%E3%83%9E%E3%82%AC%E3%82%B8%E3%83%B3', '_blank'); // 新しいタブを開き、ページを表示
+        
       });
     }
 
@@ -238,6 +262,7 @@ var Puzzle = function () {
     this.movingFlag = true;
     this.moveOldPos = [y, x];
     this.moveTargetPos = [tpos[tposIndex][0], tpos[tposIndex][1]];
+    this.score++;
 
     // 移動完了,クリアしたか確認
     if(this.clearCheck()==true){
@@ -307,11 +332,11 @@ var Puzzle = function () {
         // 数字の表示
         if (this.showNumberFlag == true) {
           textSize(this.imageSize / 2);
-          blendMode(ADD);
-          stroke(255, 64);
-          strokeWeight(5);
-          fill(255, 64);
-          var offsetX = -textWidth(this.field[y][x] + "") / 2;
+          blendMode(BLEND);
+          stroke(0);
+          strokeWeight(3);
+          fill(255);
+          var offsetX = -textWidth(this.field[y][x]+1 + "") / 2;
           var offsetY = textAscent() * 1.5;
           text(this.field[y][x] + 1, this.imageSize * (x + 0.5) + offsetX, this.imageSize * y + offsetY);
           blendMode(BLEND);

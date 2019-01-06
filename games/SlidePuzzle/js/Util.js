@@ -7,3 +7,8 @@ var widthScale = function (val) {
 var heightScale = function (val) {
   return windowHeight * val;
 }
+
+// ゼロ埋め
+function zeroPadding(num, length) {
+  return ('0000000000' + num).slice(-length);
+}
