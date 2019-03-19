@@ -1,0 +1,3 @@
+interface DanmakuScript{
+  update(): void;
+}
