@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id='tetris'>
+      <div >
+        <div v-for='rows in drawField'>
+          <div class = 'column'>
+            <div v-for='block in rows' class='block' v-bind:style='{background:BLOCK_COLOR[block]}'>
+              <!-- {{block}} -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-for='(next,index) in nextBlock'>
+        <div style='float: left; width:40vw; padding-top:20px;'>
+          <div v-for='line in nextBlock[index]'>
+            <div class = 'nextBlockField' v-bind:style=''>
+              <div v-for='block in line' class='block' v-bind:style='{background:BLOCK_COLOR[block]}'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='score'>
+        {{score}} Line
+      </div>
+
+      <input type="text" class='inputForm'
+        @keydown.up='rotate'
+        @keydown.down='move(0,1)'
+        @keydown.right='move(1,0)'
+        @keydown.left='move(-1,0)'
+        value='操作スペース'
+        readonly='readonly'>
+      <!-- <button 
+        class='inputForm'
+        id='inputForm'
+        @keydown.down='move(0,1)'
+        @keydown.right='move(1,0)'
+        @keydown.left='move(-1,0)'
+      > -->
+      
+      </button>
+
+    </div>
+    <script src='main.js'></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+*{
+  padding: 0 0;
+  margin: 0 0;
+  background: black;
+}
+
+button{
+  font-size: 40px;
+  color: white;
+}
+
+.column{
+  float: left;
+  /* position: absolute; */
+}
+
+.nextBlockField{
+  float: left;
+  left: 5vw;
+  top: 5vh;
+
+  position: relative;
+}
+
+.block{
+  width: 3.5vh;
+  height: 3.5vh;
+  background: red;
+  margin: -2px;
+  border: solid gray 1px;
+}
+
+.block_wall{
+  background: gray;
+}
+
+.inputForm{
+  top: 84vh;
+  left:0vw;
+  width: 100vw;
+  height: 16vh;
+  position: fixed;
+  border: none;
+  background: #ccc;
+  font-size: 40px;
+  text-align: center;
+
+}
+
+.score{
+  color: white;
+  font-size: 30px;
+}
