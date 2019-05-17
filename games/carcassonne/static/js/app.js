@@ -696,31 +696,31 @@ Vue.component('p5-cell',{
 
       p5.resourceload = function(){
         if(images.glass===undefined){
-          images.glass=p5.loadImage('/static/img/glass.png');
+          images.glass=p5.loadImage('./static/img/glass.png');
         }
         if(images.ground===undefined){
-          images.ground=p5.loadImage('/static/img/ground.png');
+          images.ground=p5.loadImage('./static/img/ground.png');
         }
         if(images.water===undefined){
-          images.water=p5.loadImage('/static/img/water.png');
+          images.water=p5.loadImage('./static/img/water.png');
         }
         if(images.water_edge===undefined){
-          images.water_edge=p5.loadImage('/static/img/water_edge.png');
+          images.water_edge=p5.loadImage('./static/img/water_edge.png');
         }
         if(images.water_edge_small===undefined){
-          images.water_edge_small=p5.loadImage('/static/img/water_edge_small.png');
+          images.water_edge_small=p5.loadImage('./static/img/water_edge_small.png');
         }
         if(images.water_center===undefined){
-          images.water_center=p5.loadImage('/static/img/water_center.png');
+          images.water_center=p5.loadImage('./static/img/water_center.png');
         }
         if(images.road_edge===undefined){
-          images.road_edge=p5.loadImage('/static/img/road_edge.png');
+          images.road_edge=p5.loadImage('./static/img/road_edge.png');
         }
         if(images.road_center===undefined){
-          images.road_center=p5.loadImage('/static/img/road_center.png');
+          images.road_center=p5.loadImage('./static/img/road_center.png');
         }
         if(images.cloud===undefined){
-          images.cloud=p5.loadImage('/static/img/cloud.png');
+          images.cloud=p5.loadImage('./static/img/cloud.png');
         }
       }
 
