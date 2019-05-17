@@ -1,0 +1,112 @@
+html, body{
+  background: rgb(34,24,7);
+}
+
+.cell{
+  position: absolute;
+}
+
+a{
+  text-decoration: none;
+}
+a:-webkit-any-link{
+  color: white;
+}
+
+.hand{
+  /* left: 10vw !important;
+  top: calc(100vh - 50px) !important; */
+  left: 60vw !important;
+  top: 5vh !important;
+}
+
+ul{
+  color: white;
+}
+
+h1{
+  color: white;
+}
+
+.nextButton{
+  position: absolute;
+  left: 0;
+  top: calc(100vh - 50px);
+  font-size: 30px;
+}
+
+.UI-Board{
+  color: white;
+  font-size: 14px;
+}
+
+.cloud{
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+div span{
+  display: inline-block;
+}
+
+.player{
+}
+
+.rank {
+  min-width: 100px;
+}
+
+.name{
+  min-width: 200px;
+  /* background: red; */
+}
+
+.score{
+  min-width: 200px;
+  /* background: blue; */
+}
+
+.created{
+  font-size: 15px;
+}
+
+.rank-first{
+  font-size: 35px;
+  padding-top: 10px;
+  border-bottom: solid 1px gray;
+}
+
+.rank-first .rank{
+  color: gold;
+}
+
+.rank-second .rank{
+  color: silver;
+}
+
+.rank-third .rank{
+  color: brown;
+}
+
+.rank-second{
+  font-size: 30px;
+  padding-top: 10px;
+  border-bottom: solid 1px gray;
+}
+
+.rank-third{
+  font-size: 25px;
+  padding-top: 10px;
+  border-bottom: solid 1px gray;
+}
+
+.rank-other{
+  font-size: 20px;
+}
