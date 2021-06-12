@@ -18,7 +18,7 @@ const urlsToCache = [
   './',
   './index.html',
   './Build/WebGL.data.unityweb',
-  './Build/WebGL.framework.js.unity',
+  './Build/WebGL.framework.js.unityweb',
   './Build/WebGL.loader.js',
   './Build/WebGL.wasm.unityweb',
   './TemplateData/fullscreen-button.png',
